@@ -1,6 +1,9 @@
 # Em-busca-do-Hardware-perdido
 Jogo PI
 
-Teste 1 - Gustavo
-Teste 2 - Arnaud
-Teste 1 - Zanivan
+Nosso jogo do PI
+
+Integrantes: 
+* Gustavo Brandão
+* Henrique Arnaud
+* Matheus Zanivan
