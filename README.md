@@ -3,7 +3,7 @@ Jogo PI
 
 Nosso jogo do PI
 
-Integrantes: 
+**Integrantes:**
 * Gustavo Brandão
 * Henrique Arnaud
 * Matheus Zanivan
