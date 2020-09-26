@@ -5,6 +5,7 @@
 
 #define Width 640
 #define Height 480
+#define FPS 60
 
 int main(void) {
 
@@ -21,7 +22,9 @@ int main(void) {
 
 	ALLEGRO_DISPLAY* janela = NULL;
 	ALLEGRO_EVENT_QUEUE* fila_eventos = NULL;
-	Objeto* barra;
+	ALLEGRO_TIMER* timer = NULL;
+	ALLEGRO_BITMAP* folha_sprite = NULL;
+	Objeto* personagem;
 
 	al_init();
 
@@ -39,17 +42,17 @@ int main(void) {
 	al_register_event_source(fila_eventos, al_get_keyboard_event_source());
 	al_register_event_source(fila_eventos, al_get_display_event_source(janela));
 
-	barra = (Objeto*)malloc(sizeof(Objeto));
-	barra->imagem = al_load_bitmap("barra.png");
-	barra->x = 8;
-	barra->y = 480 / 2 - 150 / 2;
-	barra->largura = 20;
-	barra->altura = 150;
+	personagem = (Objeto*)malloc(sizeof(Objeto));
+	personagem->imagem = al_load_bitmap("Sprites/BlueKnightSpriteSheet.png");
+	personagem->x = 8;
+	personagem->y = 480 / 2 - 150 / 2;
+	personagem->largura = 20;
+	personagem->altura = 150;
 
 	bool jogando = true;
 	int pressionado = 0;
 	int pressionadox = 0;
-	int ciclos = 0;
+
 
 	while (jogando) {
 
@@ -88,24 +91,8 @@ int main(void) {
 			}
 		}
 
-		ciclos++;
-		if (ciclos % 10 == 0) {
-
-			if (pressionado != 0) {
-				if (!(barra->y + pressionado <= 0 || barra->y + barra->altura + pressionado >= 480)) {
-					barra->y += pressionado;
-				}
-			}
-			if (pressionadox != 0) {
-				if (!(barra->x + pressionado <= 0 || barra->x + barra->largura + pressionado >= 640)) {
-					barra->x += pressionadox;
-				}
-			}
-
-		}
-
 		al_clear_to_color(al_map_rgb(0, 0, 0));
-		al_draw_bitmap(barra->imagem, barra->x, barra->y, 0);
+		al_draw_bitmap(personagem->imagem, personagem->x, personagem->y, 0);
 
 		al_flip_display();
 	}
