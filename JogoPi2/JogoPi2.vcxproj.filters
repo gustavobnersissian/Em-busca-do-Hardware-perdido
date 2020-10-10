@@ -18,7 +18,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Main.c">
+    <ClCompile Include="Origem.c">
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>
   </ItemGroup>
