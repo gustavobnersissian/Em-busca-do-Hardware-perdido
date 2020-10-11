@@ -21,6 +21,7 @@ ALLEGRO_EVENT evento;
 ALLEGRO_AUDIO_STREAM* musica = NULL;
 
 
+
 void carregaArquivos() {
 
     // Carrega a imagem
@@ -114,10 +115,9 @@ int menu(int jogando, ALLEGRO_EVENT evento) {
     if (evento.type == ALLEGRO_EVENT_MOUSE_BUTTON_UP) {
         if (evento.mouse.x >= 282 &&
             evento.mouse.x <= 353 && evento.mouse.y <= 383 &&
-            evento.mouse.y >= 359){
+            evento.mouse.y >= 359) {
 
             return NULL;
         }
     }
-
 }
