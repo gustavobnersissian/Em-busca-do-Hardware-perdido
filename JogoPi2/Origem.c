@@ -27,7 +27,7 @@ void carregaArquivos() {
     // Carrega a imagem
     background = al_load_bitmap("menu.png");
     //carrega o stream
-    musica = al_load_audio_stream("musica.ogg", 4, 1024);
+   
 
 }
 
@@ -67,7 +67,7 @@ int main()
 
     // Desenha a imagem na tela
     al_draw_bitmap(background, 0, 0, 0);
-
+    musica = al_load_audio_stream("musica.ogg", 4, 1024);
     //audio
     al_attach_audio_stream_to_mixer(musica, al_get_default_mixer());
     al_set_audio_stream_playmode(musica, ALLEGRO_PLAYMODE_LOOP);
