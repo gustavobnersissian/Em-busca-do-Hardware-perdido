@@ -5,11 +5,12 @@
 #include <allegro5/allegro_acodec.h>
 
 
+
 #define LARGURA 640
 #define ALTURA 480
 
 
-int menu(jogando, evento);
+//int menu(jogando, evento);
 
 ALLEGRO_TIMER* timer = NULL;
 ALLEGRO_EVENT_QUEUE* fila_eventos = NULL;
@@ -19,16 +20,27 @@ ALLEGRO_FONT* fonte = NULL;
 ALLEGRO_BITMAP* background = NULL;
 ALLEGRO_EVENT evento;
 ALLEGRO_AUDIO_STREAM* musica = NULL;
+//ALLEGRO_BITMAP* teste = NULL;
+ALLEGRO_BITMAP* azul = NULL;
+ALLEGRO_BITMAP* vermelho = NULL;
 
 
+
+int menu = 1;
 
 void carregaArquivos() {
 
     // Carrega a imagem
-    background = al_load_bitmap("menu.png");
+    background = al_load_bitmap("menu1.png");
     //carrega o stream
-   
+    azul = al_load_bitmap("azul.png");
+    vermelho = al_load_bitmap("vermelho.png");
+}
 
+
+int mostra() {
+
+    al_draw_bitmap(azul, 0, 0, 0);
 }
 
 int inicializacao() {
@@ -54,12 +66,11 @@ int main()
 
     inicializacao();
 
+    int tecla = 0;
     janela = al_create_display(LARGURA, ALTURA);
 
-    //isso fica no main
-    al_register_event_source(fila_eventos, al_get_keyboard_event_source());
-    al_register_event_source(fila_eventos, al_get_mouse_event_source());
-    al_register_event_source(fila_eventos, al_get_display_event_source(janela));
+    
+    
 
 
 
@@ -77,25 +88,73 @@ int main()
 
     bool redraw = true;
 
-
     int jogando = 1;
+   
 
-
+    int na_area_jogar = 0;//Diz se o mouse esta sobre a opção sair do jogo
 
     while (jogando)
     {
+
+
+        al_register_event_source(fila_eventos, al_get_keyboard_event_source());
+        al_register_event_source(fila_eventos, al_get_mouse_event_source());
+        al_register_event_source(fila_eventos, al_get_display_event_source(janela));
+
+        al_clear_to_color(al_map_rgb(0, 0, 0));
+
+        al_draw_bitmap(background, 0, 0, NULL);
+
         al_wait_for_event(fila_eventos, &evento);
 
+        // Se o evento for um clique do mouse
+        if (evento.type == ALLEGRO_EVENT_MOUSE_BUTTON_DOWN && menu == 1) {
 
-        if ((evento.type == ALLEGRO_EVENT_KEY_DOWN) || (evento.type == ALLEGRO_EVENT_DISPLAY_CLOSE))
-            break;
+            //se o clique foi no botão sair
+            if ((evento.mouse.x >= 566 &&
+                evento.mouse.x <= 610 && evento.mouse.y <= 49 &&
+                evento.mouse.y >= 9)) {
 
-        if (al_is_event_queue_empty(fila_eventos))
-        {
-            jogando = menu(jogando, evento);
+                //fecha o jogo
+                return 0;
+            }    
+        }
+        if (evento.type == ALLEGRO_EVENT_MOUSE_BUTTON_DOWN && menu == 1) {
 
+            //se o clique for em infos
+            if ((evento.mouse.x >= 213 &&
+                evento.mouse.x <= 402 && evento.mouse.y <= 298 &&
+                evento.mouse.y >= 239)) {
+
+                
+                
+            }
+        }
+        if (evento.type == ALLEGRO_EVENT_MOUSE_BUTTON_DOWN && menu == 1) {
+            
+            //se for jogar
+            if ((evento.mouse.x >= 217 &&
+                evento.mouse.x <= 400 && evento.mouse.y <= 204 &&
+                evento.mouse.y >= 144)) {
+
+                
+            }
         }
 
+       
+
+
+        /*
+        if (al_is_event_queue_empty(fila_eventos))
+        {
+
+
+
+
+            //jogando = menu(jogando, evento);  
+        }
+        */
+         
         // Atualiza a tela
         al_flip_display();
 
@@ -110,6 +169,7 @@ int main()
 
 
 
+/*
 int menu(int jogando, ALLEGRO_EVENT evento) {
 
     if (evento.type == ALLEGRO_EVENT_MOUSE_BUTTON_UP) {
@@ -121,3 +181,4 @@ int menu(int jogando, ALLEGRO_EVENT evento) {
         }
     }
 }
+*/
