@@ -1,4 +1,4 @@
-﻿  Main.c
-C:\Users\HENRIQUE\Desktop\Pi2\JogoPi2\Main.c(11,20): warning C4047: 'return': 'int' difere em níveis de indireção de 'void *'
-C:\Users\HENRIQUE\Desktop\Pi2\JogoPi2\Main.c(13): warning C4715: 'menu': nem todos os caminhos de controle retornam um valor
+﻿  Origem.c
+C:\Users\HENRIQUE\Desktop\Pi2\JogoPi2\Origem.c(122,24): warning C4047: 'return': 'int' difere em níveis de indireção de 'void *'
+C:\Users\HENRIQUE\Desktop\Pi2\JogoPi2\Origem.c(125): warning C4715: 'menu': nem todos os caminhos de controle retornam um valor
   JogoPi2.vcxproj -> C:\Users\HENRIQUE\Desktop\Pi2\JogoPi2\Debug\JogoPi2.exe
