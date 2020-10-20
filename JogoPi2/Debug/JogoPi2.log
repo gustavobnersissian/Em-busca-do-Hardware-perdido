@@ -1,5 +1,2 @@
 ﻿  Origem.c
-C:\trabalho PI\Em-busca-do-Hardware-perdido\JogoPi2\Origem.c(106,46): warning C4047: 'função': 'int' difere em níveis de indireção de 'void *'
-C:\trabalho PI\Em-busca-do-Hardware-perdido\JogoPi2\Origem.c(106,42): warning C4024: 'al_draw_bitmap': tipos diferentes para parâmetro formal e real 4
-C:\trabalho PI\Em-busca-do-Hardware-perdido\JogoPi2\Origem.c(44): warning C4716: 'mostra': deve retornar um valor
   JogoPi2.vcxproj -> C:\trabalho PI\Em-busca-do-Hardware-perdido\JogoPi2\Debug\JogoPi2.exe
