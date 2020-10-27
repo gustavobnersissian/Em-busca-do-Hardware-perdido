@@ -116,11 +116,18 @@ int main(void) {
 	sprite_pulando->altura = 49;
 	*/
 	int dir = IDLE;
-	bool draw = false, draw2 = true;
+	bool draw = false, draw2 = true, ativo = false;
 	int pressionando = 0;
-	int velocidade = 2;
+	float velocidade_movimento = 2.5;
+	float velx, vely;
+	velx = vely = 0;
 
-	float sourceX = 0;
+	bool pulando = false;
+	float velocidade_pulo = 15;
+
+	const float gravidade = 1;
+
+	int sourceX = 0;
 
 
 	/*for (i = 0; i < 10; i++) {
@@ -145,46 +152,67 @@ int main(void) {
 
 			if (evento.timer.source == timer) {
 
+				ativo = true;
+
 				pressionando = 0;
 
-				if (al_key_down(&key_state, ALLEGRO_KEY_DOWN)) {
-					personagem->y += velocidade;
-					dir = DOWN;
-				}
-				if (al_key_down(&key_state, ALLEGRO_KEY_UP)) {
-					personagem->y -= velocidade;
-					dir = UP;
+				if (al_key_down(&key_state, ALLEGRO_KEY_UP) && pulando) {
+					vely = -velocidade_pulo;
+					pulando = false;
 				}
 				if (al_key_down(&key_state, ALLEGRO_KEY_RIGHT)) {
-					personagem->x += velocidade;
-					dir = RIGHT;
+					velx = velocidade_movimento;
 
 					j = 1;
 
 					pressionando = 1;
 				}
-				if (al_key_down(&key_state, ALLEGRO_KEY_LEFT)) {
-					personagem->x -= velocidade;
-					dir = LEFT;
-					j = 0;
+				else if (al_key_down(&key_state, ALLEGRO_KEY_LEFT)) {
+					velx = -velocidade_movimento;
+					
+					j = 0; 
 
 					pressionando = 1;
 				}
+				else {
+					ativo = false;
+					velx = 0;
+				}	
+
+				if(!pulando){
+					vely += gravidade;
+				}
+				else {
+					vely = 0;
+				}
+				personagem->x += velx;
+				personagem->y += vely;
+			
+				pulando = (personagem->y + 49 >= 480);
+
+				if (pulando) {
+					personagem->y = 480 - 49;
+				}
+
 			}
 
+			
 			if (evento.timer.source == frametimer) {
+				if (ativo) {
+					sourceX += al_get_bitmap_width(personagem->imagem) / 10;
+				}
+				else {
+					sourceX = 0;
+				}
+				if (sourceX >= al_get_bitmap_width(personagem->imagem)) {
+					sourceX = 0;
+				}
+
 				if (pressionando == 1) {
-					pressionando = 0;
-
-					i++;
-
-					if (i > 9) {
-						i = 0;
-					}
-
 					draw = true;
 				}
-				else if (pressionando == 0) {
+				
+				if (pressionando == 0) {
 
 					i++;
 
@@ -200,9 +228,10 @@ int main(void) {
 		if (draw) {
 			draw = false;
 
-			frame = al_create_sub_bitmap(personagem->imagem, (personagem->largura / 10) * i, 0, personagem->largura / 10, personagem->altura);
+			//frame = al_create_sub_bitmap(personagem->imagem, (personagem->largura / 10) * i, 0, personagem->largura / 10 - 5, personagem->altura);
+
 			al_clear_to_color(al_map_rgb(0, 0, 0));
-			al_draw_bitmap(frame, personagem->x, personagem->y, j);
+			al_draw_bitmap_region(personagem->imagem, sourceX, 0, personagem->largura/10, personagem->altura, personagem->x, personagem->y, j);
 			al_flip_display();
 
 		}

@@ -1,4 +1,4 @@
-C:\Users\HENRIQUE\Desktop\Pi2\JogoPi2\Debug\JogoPi2.exe
-C:\Users\HENRIQUE\Desktop\Pi2\JogoPi2\Debug\JogoPi2.pdb
 C:\trabalho PI\Em-busca-do-Hardware-perdido\JogoPi2\Debug\JogoPi2.exe
 C:\trabalho PI\Em-busca-do-Hardware-perdido\JogoPi2\Debug\JogoPi2.pdb
+C:\Users\HENRIQUE\Desktop\Pi2\JogoPi2\Debug\JogoPi2.exe
+C:\Users\HENRIQUE\Desktop\Pi2\JogoPi2\Debug\JogoPi2.pdb
