@@ -1,2 +1,9 @@
 ﻿  Origem.c
+C:\trabalho PI\Em-busca-do-Hardware-perdido\JogoPi2\Origem.c(69,18): warning C4013: 'inicializacao' indefinido; assumindo extern retornando int
+C:\trabalho PI\Em-busca-do-Hardware-perdido\JogoPi2\Origem.c(78,22): warning C4047: '=': 'int' difere em níveis de indireção de 'ALLEGRO_BITMAP *'
+C:\trabalho PI\Em-busca-do-Hardware-perdido\JogoPi2\Origem.c(79,22): warning C4047: '=': 'int' difere em níveis de indireção de 'ALLEGRO_BITMAP *'
+C:\trabalho PI\Em-busca-do-Hardware-perdido\JogoPi2\Origem.c(80,22): warning C4047: '=': 'int' difere em níveis de indireção de 'ALLEGRO_BITMAP *'
+C:\trabalho PI\Em-busca-do-Hardware-perdido\JogoPi2\Origem.c(81,22): warning C4047: '=': 'int' difere em níveis de indireção de 'ALLEGRO_BITMAP *'
+C:\trabalho PI\Em-busca-do-Hardware-perdido\JogoPi2\Origem.c(82,22): warning C4047: '=': 'int' difere em níveis de indireção de 'ALLEGRO_BITMAP *'
+C:\trabalho PI\Em-busca-do-Hardware-perdido\JogoPi2\Origem.c(83,22): warning C4047: '=': 'int' difere em níveis de indireção de 'ALLEGRO_BITMAP *'
   JogoPi2.vcxproj -> C:\trabalho PI\Em-busca-do-Hardware-perdido\JogoPi2\Debug\JogoPi2.exe
