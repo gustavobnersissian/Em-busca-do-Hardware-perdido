@@ -27,13 +27,7 @@ ALLEGRO_SAMPLE* som = NULL;
 ALLEGRO_BITMAP* infos = NULL;
 ALLEGRO_BITMAP* cred = NULL;
 
-ALLEGRO_BITMAP* img1 = NULL;
-ALLEGRO_BITMAP* img2 = NULL;
-ALLEGRO_BITMAP* img3 = NULL;
-ALLEGRO_BITMAP* img4 = NULL;
-ALLEGRO_BITMAP* img5 = NULL;
-ALLEGRO_BITMAP* img6 = NULL;
-ALLEGRO_BITMAP* img7 = NULL;
+
 
 
 
@@ -55,50 +49,8 @@ void carregaArquivos() {
     infos = al_load_bitmap("infos.png");
     cred = al_load_bitmap("cred.png");
 
-    img1 = al_load_bitmap("img1.jpg");
-    img2 = al_load_bitmap("img2.jpg");
-    img3 = al_load_bitmap("img3.jpg");
-    img4 = al_load_bitmap("img4.jpg");
-    img5 = al_load_bitmap("img5.jpg");
-    img6 = al_load_bitmap("img6.jpg");
-   
 }
 
-int introducao() {
-
-    inicializacao();
-    carregaArquivos();
-
-    al_clear_to_color(al_map_rgb(0, 0, 0));
-    al_flip_display();
-    al_draw_bitmap(img1, 0, 0, 0);
-
-    int imagens[6], i;
-
-    imagens[0] = img1;
-    imagens[1] = img2;
-    imagens[2] = img3;
-    imagens[3] = img4;
-    imagens[4] = img5;
-    imagens[5] = img6;
-
-    for (i = 0; i < 5; i++) {
-
-        if(imagens[i] == 2)
-            al_draw_bitmap(img2, 0, 0, 0);
-        else if (imagens[i] == 3)
-            al_draw_bitmap(img3, 0, 0, 0);
-        else if (imagens[i] == 4)
-            al_draw_bitmap(img4, 0, 0, 0);
-        else if (imagens[i] == 5)
-            al_draw_bitmap(img5, 0, 0, 0);
-        else if (imagens[i] == 6)
-            al_draw_bitmap(img6, 0, 0, 0);
-    }
-
-
-    return 1;
-}
 
 
 int inicializacao() {
