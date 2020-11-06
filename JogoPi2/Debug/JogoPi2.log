@@ -1,2 +1,10 @@
 ﻿  Origem.c
+C:\trabalho PI\Em-busca-do-Hardware-perdido\JogoPi2\Origem.c(73,6): warning C4142: 'velx': redefinição benigna de tipo
+C:\trabalho PI\Em-busca-do-Hardware-perdido\JogoPi2\Origem.c(72): message : consulte a declaração de 'velx'
+C:\trabalho PI\Em-busca-do-Hardware-perdido\JogoPi2\Origem.c(74,6): warning C4142: 'vely': redefinição benigna de tipo
+C:\trabalho PI\Em-busca-do-Hardware-perdido\JogoPi2\Origem.c(72): message : consulte a declaração de 'vely'
+C:\trabalho PI\Em-busca-do-Hardware-perdido\JogoPi2\Origem.c(221,17): warning C4098: 'colisaoGoblin': função 'void' retornando um valor
+C:\trabalho PI\Em-busca-do-Hardware-perdido\JogoPi2\Origem.c(243,1): warning C4047: 'inicializando': 'int' difere em níveis de indireção de 'ALLEGRO_BITMAP *'
+C:\trabalho PI\Em-busca-do-Hardware-perdido\JogoPi2\Origem.c(244,1): warning C4047: 'inicializando': 'int' difere em níveis de indireção de 'ALLEGRO_BITMAP *'
+C:\trabalho PI\Em-busca-do-Hardware-perdido\JogoPi2\Origem.c(245,1): warning C4047: 'inicializando': 'int' difere em níveis de indireção de 'ALLEGRO_BITMAP *'
   JogoPi2.vcxproj -> C:\trabalho PI\Em-busca-do-Hardware-perdido\JogoPi2\Debug\JogoPi2.exe
