@@ -24,9 +24,12 @@ struct objeto
     int altura;
 };
 
+
+
+
 typedef struct objeto Objeto;
 
-Objeto* personagem, * sprite_parado, * goblin;
+Objeto* personagem, * sprite_parado, * goblin, * item;
 
 ALLEGRO_KEYBOARD_STATE key_state;
 
@@ -246,7 +249,7 @@ void carregaArquivos() {
     img4 = al_load_bitmap("img4.jpg");
     img5 = al_load_bitmap("img5.jpg");
     img6 = al_load_bitmap("img6.jpg");
-
+ 
     vetor[0] = img1;
     vetor[1] = img2;
     vetor[2] = img3;
@@ -463,7 +466,7 @@ int jogo(ALLEGRO_BITMAP* azul) {
     return 0;
 }
 
-void introducao(ALLEGRO_BITMAP*img1, int parametro) {
+void introducao(ALLEGRO_BITMAP* img1, int parametro) {
 
     carregaArquivos();
     inicializacao();
@@ -503,7 +506,9 @@ void introducao(ALLEGRO_BITMAP*img1, int parametro) {
                 break;
             }
         }
-      
+
+        // Faz com que quando clicar muda para proxima imagem
+
         if (tecla == 4)
             introducao(vetor[parametro + 1], 1);
         if (tecla == 5)
@@ -514,16 +519,11 @@ void introducao(ALLEGRO_BITMAP*img1, int parametro) {
             introducao(vetor[parametro + 1], 4);
         if (tecla == 8)
             introducao(vetor[parametro + 1], 5);
-        if (tecla == 9) {
-            
-
-            movimentarSprite(key_state);
-            desenharSprite();
-        }
-            
-
-        
+        if (tecla == 9)
+            jogo(azul);
     }
+
+    
 }
 
 
@@ -568,6 +568,15 @@ int main()
     al_start_timer(frametimer);
 
 
+    Objeto* processador; //processador agora é um objeto
+    processador = (Objeto*)malloc(sizeof(Objeto));
+    processador->altura = 100;
+    processador->largura = 100;
+    processador->x = 320;
+    processador->y = 470;
+    processador->imagem = al_load_bitmap("obj.jpg");
+
+    
     while (jogando && menu == 1)
     {
 
@@ -612,7 +621,8 @@ int main()
                 evento.mouse.y >= 144)) {
 
                
-                introducao(img1, 0);
+                al_draw_bitmap(processador->imagem, 0, 0, 0);
+                //introducao(img1, 0);
             }
         }
         if (evento.type == ALLEGRO_EVENT_MOUSE_BUTTON_DOWN) {
@@ -641,7 +651,7 @@ int main()
         al_flip_display();
 
     }
-
+    
     al_destroy_font(fonte);
     al_destroy_display(janela);
     al_destroy_event_queue(fila_eventos);
