@@ -52,7 +52,10 @@ ALLEGRO_BITMAP* iv = NULL;
 ALLEGRO_BITMAP* img1 = NULL;
 ALLEGRO_BITMAP* img2 = NULL;
 ALLEGRO_BITMAP* img3 = NULL;
-
+ALLEGRO_BITMAP* img4 = NULL;
+ALLEGRO_BITMAP* img5 = NULL;
+ALLEGRO_BITMAP* img6 = NULL;
+ALLEGRO_BITMAP* vetor[6];
 
 jogo(azul);
 jogo2(vermelho);
@@ -93,7 +96,10 @@ void movimentarSprite(ALLEGRO_KEYBOARD_STATE key_state) {
 
             ativo = true;
 
-            pressionando = 0;
+            pressionando = 0; 
+            al_register_event_source(fila_eventos, al_get_keyboard_event_source());
+            al_register_event_source(fila_eventos, al_get_mouse_event_source());
+            al_register_event_source(fila_eventos, al_get_display_event_source(janela));
 
             if (al_key_down(&key_state, ALLEGRO_KEY_UP) && pulando) {
                 vely = -velocidade_pulo;
@@ -188,6 +194,9 @@ void movimentarSprite(ALLEGRO_KEYBOARD_STATE key_state) {
 }
 
 void desenharSprite() {
+
+    movimentarSprite(key_state);
+
     if (draw) {
         draw = false;
 
@@ -195,7 +204,7 @@ void desenharSprite() {
 
         al_draw_bitmap_region(personagem->imagem, sourceX, 0, personagem->largura / 10, personagem->altura, personagem->x, personagem->y, j);
         al_flip_display();
-
+        
     }
     else if (draw2) {
         draw2 = false;
@@ -205,8 +214,6 @@ void desenharSprite() {
         al_flip_display();
     }
     if (inimigo1) {
-
-        al_draw_bitmap(vermelho, 0, 0, 0);
         al_draw_bitmap_region(goblin->imagem, sourceX, 0, goblin->largura / 4, goblin->altura, goblin->x, goblin->y, k);
         al_flip_display();
     }
@@ -236,6 +243,16 @@ void carregaArquivos() {
     img1 = al_load_bitmap("img1.jpg");
     img2 = al_load_bitmap("img2.jpg");
     img3 = al_load_bitmap("img3.jpg");
+    img4 = al_load_bitmap("img4.jpg");
+    img5 = al_load_bitmap("img5.jpg");
+    img6 = al_load_bitmap("img6.jpg");
+
+    vetor[0] = img1;
+    vetor[1] = img2;
+    vetor[2] = img3;
+    vetor[3] = img4;
+    vetor[4] = img5;
+    vetor[5] = img6;
 }
 
 
@@ -355,7 +372,9 @@ int jogo2(ALLEGRO_BITMAP* vermelho) {
     while (jogando3) {
 
 
-
+        al_register_event_source(fila_eventos, al_get_keyboard_event_source());
+        al_register_event_source(fila_eventos, al_get_mouse_event_source());
+        al_register_event_source(fila_eventos, al_get_display_event_source(janela));
         //al_draw_bitmap(azul, 0, 0, 0);
 
         al_wait_for_event(fila_eventos, &evento);
@@ -406,7 +425,9 @@ int jogo(ALLEGRO_BITMAP* azul) {
 
     while (jogando2) {
 
-
+        al_register_event_source(fila_eventos, al_get_keyboard_event_source());
+        al_register_event_source(fila_eventos, al_get_mouse_event_source());
+        al_register_event_source(fila_eventos, al_get_display_event_source(janela));
         al_wait_for_event(fila_eventos, &evento);
 
         // Atualiza a tela
@@ -442,10 +463,11 @@ int jogo(ALLEGRO_BITMAP* azul) {
     return 0;
 }
 
-void introducao(ALLEGRO_BITMAP*img1) {
+void introducao(ALLEGRO_BITMAP*img1, int parametro) {
 
     carregaArquivos();
     inicializacao();
+
     al_clear_to_color(al_map_rgb(0, 0, 0));
 
     //primeira imagem
@@ -453,7 +475,6 @@ void introducao(ALLEGRO_BITMAP*img1) {
     al_flip_display();
 
     int tecla = 0;
-    int cont = 0;
 
     bool done = true;
     while (done) {
@@ -478,20 +499,29 @@ void introducao(ALLEGRO_BITMAP*img1) {
                 break;
                 //seta para direita.
             case ALLEGRO_KEY_RIGHT:
-                tecla = 4;
+                tecla = 4 + parametro;
                 break;
             }
         }
-
-        if (tecla != 0) {
-
-
-            if (tecla == 4) {
-                al_draw_bitmap(img2, 0, 0, 0);
-
-            }
+      
+        if (tecla == 4)
+            introducao(vetor[parametro + 1], 1);
+        if (tecla == 5)
+            introducao(vetor[parametro + 1], 2);
+        if (tecla == 6)
+            introducao(vetor[parametro + 1], 3);
+        if (tecla == 7)
+            introducao(vetor[parametro + 1], 4);
+        if (tecla == 8)
+            introducao(vetor[parametro + 1], 5);
+        if (tecla == 9) {
             
+
+            movimentarSprite(key_state);
+            desenharSprite();
         }
+            
+
         
     }
 }
@@ -502,8 +532,6 @@ int main()
 {
 
     inicializacao();
-
-    janela = al_create_display(LARGURA, ALTURA);
 
     carregaArquivos();
 
@@ -542,7 +570,6 @@ int main()
 
     while (jogando && menu == 1)
     {
-
 
         al_register_event_source(fila_eventos, al_get_keyboard_event_source());
         al_register_event_source(fila_eventos, al_get_mouse_event_source());
@@ -585,7 +612,7 @@ int main()
                 evento.mouse.y >= 144)) {
 
                
-                introducao(img1);
+                introducao(img1, 0);
             }
         }
         if (evento.type == ALLEGRO_EVENT_MOUSE_BUTTON_DOWN) {
