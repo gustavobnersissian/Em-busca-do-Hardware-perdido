@@ -187,8 +187,6 @@ void movimentarSprite(ALLEGRO_KEYBOARD_STATE key_state) {
 
 }
 
-
-
 void desenharSprite() {
     if (draw) {
         draw = false;
@@ -278,22 +276,10 @@ void introducao(ALLEGRO_BITMAP*img1) {
                 tecla = 4;
                 break;
             }
-
-            
         }
 
         
 
-        if (tecla == 4) {
-            introducao(img2);
-            tecla = 0;
-        }
-        
-        if (tecla == 3) {
-            introducao(iv);
-        }
-            
-           
     }
 }
 
@@ -588,7 +574,7 @@ int main()
                 evento.mouse.y >= 144)) {
 
                
-                introducao(img1);
+                //condicao.
             }
         }
         if (evento.type == ALLEGRO_EVENT_MOUSE_BUTTON_DOWN) {
@@ -602,10 +588,6 @@ int main()
             }
         }
         
-
-       
-
-
         /*
         if (al_is_event_queue_empty(fila_eventos))
         {
