@@ -444,6 +444,8 @@ int jogo(ALLEGRO_BITMAP* azul) {
 
 void introducao(ALLEGRO_BITMAP*img1) {
 
+    carregaArquivos();
+    inicializacao();
     al_clear_to_color(al_map_rgb(0, 0, 0));
 
     //primeira imagem
@@ -481,14 +483,14 @@ void introducao(ALLEGRO_BITMAP*img1) {
             }
         }
 
-        if (tecla >= 0) {
+        if (tecla != 0) {
 
-            if (tecla == 4)
-                al_draw_bitmap(img2, 0, 0, 0);    
+
+            if (tecla == 4) {
+                al_draw_bitmap(img2, 0, 0, 0);
+
+            }
             
-            if(tecla == 5)
-                al_draw_bitmap(img3, 0, 0, 0);
-        
         }
         
     }
