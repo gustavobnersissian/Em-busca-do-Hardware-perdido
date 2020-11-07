@@ -239,49 +239,7 @@ void carregaArquivos() {
 }
 
 
-void introducao(ALLEGRO_BITMAP*img1) {
 
-    al_clear_to_color(al_map_rgb(0, 0, 0));
-
-    //primeira imagem
-    al_draw_bitmap(img1, 0, 0, 0);
-    al_flip_display();
-    
-
-    int tecla = 0;
-
-    bool done = true;
-    while (done) {
-
-        al_wait_for_event(fila_eventos, &evento);
-        //se o evento for pressionar uma tecla
-        if (evento.type == ALLEGRO_EVENT_KEY_DOWN) {
-
-            //verifica qual tecla foi pressionada
-            switch (evento.keyboard.keycode) {
-                //seta para cima
-            case ALLEGRO_KEY_UP:
-                tecla = 1;
-                break;
-                //seta para baixo
-            case ALLEGRO_KEY_DOWN:
-                tecla = 2;
-                break;
-                //seta para esquerda
-            case ALLEGRO_KEY_LEFT:
-                tecla = 3;
-                break;
-                //seta para direita.
-            case ALLEGRO_KEY_RIGHT:
-                tecla = 4;
-                break;
-            }
-        }
-
-        
-
-    }
-}
 
 int inicializacao() {
 
@@ -484,6 +442,57 @@ int jogo(ALLEGRO_BITMAP* azul) {
     return 0;
 }
 
+void introducao(ALLEGRO_BITMAP*img1) {
+
+    al_clear_to_color(al_map_rgb(0, 0, 0));
+
+    //primeira imagem
+    al_draw_bitmap(img1, 0, 0, 0);
+    al_flip_display();
+
+    int tecla = 0;
+    int cont = 0;
+
+    bool done = true;
+    while (done) {
+
+        al_wait_for_event(fila_eventos, &evento);
+        //se o evento for pressionar uma tecla
+        if (evento.type == ALLEGRO_EVENT_KEY_DOWN) {
+
+            //verifica qual tecla foi pressionada
+            switch (evento.keyboard.keycode) {
+                //seta para cima
+            case ALLEGRO_KEY_UP:
+                tecla = 1;
+                break;
+                //seta para baixo
+            case ALLEGRO_KEY_DOWN:
+                tecla = 2;
+                break;
+                //seta para esquerda
+            case ALLEGRO_KEY_LEFT:
+                tecla = 3;
+                break;
+                //seta para direita.
+            case ALLEGRO_KEY_RIGHT:
+                tecla = 4;
+                break;
+            }
+        }
+
+        if (tecla >= 0) {
+
+            if (tecla == 4)
+                al_draw_bitmap(img2, 0, 0, 0);    
+            
+            if(tecla == 5)
+                al_draw_bitmap(img3, 0, 0, 0);
+        
+        }
+        
+    }
+}
 
 
 
@@ -574,7 +583,7 @@ int main()
                 evento.mouse.y >= 144)) {
 
                
-                //condicao.
+                introducao(img1);
             }
         }
         if (evento.type == ALLEGRO_EVENT_MOUSE_BUTTON_DOWN) {
