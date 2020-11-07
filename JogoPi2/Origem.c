@@ -48,9 +48,10 @@ ALLEGRO_BITMAP* vermelho = NULL;
 ALLEGRO_SAMPLE* som = NULL;
 ALLEGRO_BITMAP* infos = NULL;
 ALLEGRO_BITMAP* cred = NULL;
-
-
-
+ALLEGRO_BITMAP* iv = NULL;
+ALLEGRO_BITMAP* img1 = NULL;
+ALLEGRO_BITMAP* img2 = NULL;
+ALLEGRO_BITMAP* img3 = NULL;
 
 
 jogo(azul);
@@ -233,21 +234,67 @@ void carregaArquivos() {
     som = al_load_sample("som.ogg");
     infos = al_load_bitmap("infos.png");
     cred = al_load_bitmap("cred.png");
-
+    iv = al_load_bitmap("iv.png");
+    img1 = al_load_bitmap("img1.jpg");
+    img2 = al_load_bitmap("img2.jpg");
+    img3 = al_load_bitmap("img3.jpg");
 }
 
-int introducao[3];
 
-void intro() {
+void introducao(ALLEGRO_BITMAP*img1) {
+
+    al_clear_to_color(al_map_rgb(0, 0, 0));
+
+    //primeira imagem
+    al_draw_bitmap(img1, 0, 0, 0);
+    al_flip_display();
     
-    int foto1 = al_load_bitmap("1.png");
-    int foto2 = al_load_bitmap("2.png");
-    int foto3 = al_load_bitmap("3.png");
 
-    introducao[0] = foto1;
-    introducao[1] = foto2;
-    introducao[2] = foto3;
+    int tecla = 0;
 
+    bool done = true;
+    while (done) {
+
+        al_wait_for_event(fila_eventos, &evento);
+        //se o evento for pressionar uma tecla
+        if (evento.type == ALLEGRO_EVENT_KEY_DOWN) {
+
+            //verifica qual tecla foi pressionada
+            switch (evento.keyboard.keycode) {
+                //seta para cima
+            case ALLEGRO_KEY_UP:
+                tecla = 1;
+                break;
+                //seta para baixo
+            case ALLEGRO_KEY_DOWN:
+                tecla = 2;
+                break;
+                //seta para esquerda
+            case ALLEGRO_KEY_LEFT:
+                tecla = 3;
+                break;
+                //seta para direita.
+            case ALLEGRO_KEY_RIGHT:
+                tecla = 4;
+                break;
+            }
+
+            
+        }
+
+        
+
+        if (tecla == 4) {
+            introducao(img2);
+            tecla = 0;
+        }
+        
+        if (tecla == 3) {
+            introducao(iv);
+        }
+            
+           
+    }
 }
 
 int inicializacao() {
@@ -541,7 +588,7 @@ int main()
                 evento.mouse.y >= 144)) {
 
                
-                jogo(azul);
+                introducao(img1);
             }
         }
         if (evento.type == ALLEGRO_EVENT_MOUSE_BUTTON_DOWN) {
