@@ -48,15 +48,10 @@ ALLEGRO_BITMAP* vermelho = NULL;
 ALLEGRO_SAMPLE* som = NULL;
 ALLEGRO_BITMAP* infos = NULL;
 ALLEGRO_BITMAP* cred = NULL;
-
+ALLEGRO_BITMAP* iv = NULL;
 ALLEGRO_BITMAP* img1 = NULL;
 ALLEGRO_BITMAP* img2 = NULL;
 ALLEGRO_BITMAP* img3 = NULL;
-ALLEGRO_BITMAP* img4 = NULL;
-ALLEGRO_BITMAP* img5 = NULL;
-ALLEGRO_BITMAP* img6 = NULL;
-ALLEGRO_BITMAP* img7 = NULL;
-
 
 
 jogo(azul);
@@ -230,58 +225,20 @@ void carregaArquivos() {
 
     musica = al_load_audio_stream("musica.ogg", 4, 1024);
     // Carrega a imagem
-    background = al_load_bitmap("menu1.png");
+    background = al_load_bitmap("menu1.jpg");
     //carrega o stream
     azul = al_load_bitmap("azul.png");
     vermelho = al_load_bitmap("vermelha.png");
     som = al_load_sample("som.ogg");
     infos = al_load_bitmap("infos.png");
     cred = al_load_bitmap("cred.png");
-
+    iv = al_load_bitmap("iv.png");
     img1 = al_load_bitmap("img1.jpg");
     img2 = al_load_bitmap("img2.jpg");
     img3 = al_load_bitmap("img3.jpg");
-    img4 = al_load_bitmap("img4.jpg");
-    img5 = al_load_bitmap("img5.jpg");
-    img6 = al_load_bitmap("img6.jpg");
-   
 }
 
-int introducao() {
 
-    inicializacao();
-    carregaArquivos();
-
-    al_clear_to_color(al_map_rgb(0, 0, 0));
-    al_flip_display();
-    al_draw_bitmap(img1, 0, 0, 0);
-
-    int imagens[6], i;
-
-    imagens[0] = img1;
-    imagens[1] = img2;
-    imagens[2] = img3;
-    imagens[3] = img4;
-    imagens[4] = img5;
-    imagens[5] = img6;
-
-    for (i = 0; i < 5; i++) {
-
-        if(imagens[i] == 2)
-            al_draw_bitmap(img2, 0, 0, 0);
-        else if (imagens[i] == 3)
-            al_draw_bitmap(img3, 0, 0, 0);
-        else if (imagens[i] == 4)
-            al_draw_bitmap(img4, 0, 0, 0);
-        else if (imagens[i] == 5)
-            al_draw_bitmap(img5, 0, 0, 0);
-        else if (imagens[i] == 6)
-            al_draw_bitmap(img6, 0, 0, 0);
-    }
-
-
-    return 1;
-}
 
 
 int inicializacao() {
@@ -485,6 +442,59 @@ int jogo(ALLEGRO_BITMAP* azul) {
     return 0;
 }
 
+void introducao(ALLEGRO_BITMAP*img1, int parametro) {
+
+    carregaArquivos();
+
+    al_clear_to_color(al_map_rgb(0, 0, 0));
+
+    //primeira imagem
+    al_draw_bitmap(img1, 0, 0, 0);
+    al_flip_display();
+
+    int tecla = 0;
+
+    bool done = true;
+    while (done) {
+
+        al_wait_for_event(fila_eventos, &evento);
+        //se o evento for pressionar uma tecla
+        if (evento.type == ALLEGRO_EVENT_KEY_DOWN) {
+
+            //verifica qual tecla foi pressionada
+            switch (evento.keyboard.keycode) {
+                //seta para cima
+            case ALLEGRO_KEY_UP:
+                tecla = 1;
+                break;
+                //seta para baixo
+            case ALLEGRO_KEY_DOWN:
+                tecla = 2;
+                break;
+                //seta para esquerda
+            case ALLEGRO_KEY_LEFT:
+                tecla = 3;
+                break;
+                //seta para direita.
+            case ALLEGRO_KEY_RIGHT:
+                tecla = 4 + parametro;
+                break;
+            }
+        }
+       /* else if (evento.type == ALLEGRO_EVENT_KEY_UP) {
+            if (evento.keyboard.keycode == ALLEGRO_KEY_RIGHT) {
+                cont++;
+            }
+        }*/
+
+        if (tecla == 4)
+            introducao(img2, 1);
+            
+        if (tecla == 5)
+            introducao(img3, 2);     
+        
+    }
+}
 
 
 
@@ -492,8 +502,6 @@ int main()
 {
 
     inicializacao();
-
-    janela = al_create_display(LARGURA, ALTURA);
 
     carregaArquivos();
 
@@ -533,7 +541,6 @@ int main()
     while (jogando && menu == 1)
     {
 
-
         al_register_event_source(fila_eventos, al_get_keyboard_event_source());
         al_register_event_source(fila_eventos, al_get_mouse_event_source());
         al_register_event_source(fila_eventos, al_get_display_event_source(janela));
@@ -548,9 +555,9 @@ int main()
         if (evento.type == ALLEGRO_EVENT_MOUSE_BUTTON_DOWN && menu == 1) {
 
             //se o clique foi no botão sair
-            if ((evento.mouse.x >= 566 &&
-                evento.mouse.x <= 610 && evento.mouse.y <= 49 &&
-                evento.mouse.y >= 9)) {
+            if ((evento.mouse.x >= 590 &&
+                evento.mouse.x <= 630 && evento.mouse.y <= 42 &&
+                evento.mouse.y >= 6)) {
 
                 //fecha o jogo
                 return 0;
@@ -575,7 +582,7 @@ int main()
                 evento.mouse.y >= 144)) {
 
                
-                jogo(azul);
+                introducao(img1, 0);
             }
         }
         if (evento.type == ALLEGRO_EVENT_MOUSE_BUTTON_DOWN) {
@@ -589,10 +596,6 @@ int main()
             }
         }
         
-
-       
-
-
         /*
         if (al_is_event_queue_empty(fila_eventos))
         {
