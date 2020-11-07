@@ -1,14 +1,14 @@
 ﻿  Origem.c
-C:\Users\HENRIQUE\Desktop\ProjetoIntegrador\Em-busca-do-Hardware-perdido\JogoPi2\Origem.c(79,6): warning C4142: 'velx': redefinição benigna de tipo
-C:\Users\HENRIQUE\Desktop\ProjetoIntegrador\Em-busca-do-Hardware-perdido\JogoPi2\Origem.c(78): message : consulte a declaração de 'velx'
-C:\Users\HENRIQUE\Desktop\ProjetoIntegrador\Em-busca-do-Hardware-perdido\JogoPi2\Origem.c(80,6): warning C4142: 'vely': redefinição benigna de tipo
-C:\Users\HENRIQUE\Desktop\ProjetoIntegrador\Em-busca-do-Hardware-perdido\JogoPi2\Origem.c(78): message : consulte a declaração de 'vely'
-C:\Users\HENRIQUE\Desktop\ProjetoIntegrador\Em-busca-do-Hardware-perdido\JogoPi2\Origem.c(225,17): warning C4098: 'colisaoGoblin': função 'void' retornando um valor
-C:\Users\HENRIQUE\Desktop\ProjetoIntegrador\Em-busca-do-Hardware-perdido\JogoPi2\Origem.c(252,18): warning C4013: 'inicializacao' indefinido; assumindo extern retornando int
-C:\Users\HENRIQUE\Desktop\ProjetoIntegrador\Em-busca-do-Hardware-perdido\JogoPi2\Origem.c(261,22): warning C4047: '=': 'int' difere em níveis de indireção de 'ALLEGRO_BITMAP *'
-C:\Users\HENRIQUE\Desktop\ProjetoIntegrador\Em-busca-do-Hardware-perdido\JogoPi2\Origem.c(262,22): warning C4047: '=': 'int' difere em níveis de indireção de 'ALLEGRO_BITMAP *'
-C:\Users\HENRIQUE\Desktop\ProjetoIntegrador\Em-busca-do-Hardware-perdido\JogoPi2\Origem.c(263,22): warning C4047: '=': 'int' difere em níveis de indireção de 'ALLEGRO_BITMAP *'
-C:\Users\HENRIQUE\Desktop\ProjetoIntegrador\Em-busca-do-Hardware-perdido\JogoPi2\Origem.c(264,22): warning C4047: '=': 'int' difere em níveis de indireção de 'ALLEGRO_BITMAP *'
-C:\Users\HENRIQUE\Desktop\ProjetoIntegrador\Em-busca-do-Hardware-perdido\JogoPi2\Origem.c(265,22): warning C4047: '=': 'int' difere em níveis de indireção de 'ALLEGRO_BITMAP *'
-C:\Users\HENRIQUE\Desktop\ProjetoIntegrador\Em-busca-do-Hardware-perdido\JogoPi2\Origem.c(266,22): warning C4047: '=': 'int' difere em níveis de indireção de 'ALLEGRO_BITMAP *'
-  JogoPi2.vcxproj -> C:\Users\HENRIQUE\Desktop\ProjetoIntegrador\Em-busca-do-Hardware-perdido\JogoPi2\Debug\JogoPi2.exe
+C:\Users\HENRIQUE\Desktop\Em-busca-do-Hardware-perdido\JogoPi2\Origem.c(79,6): warning C4142: 'velx': redefinição benigna de tipo
+C:\Users\HENRIQUE\Desktop\Em-busca-do-Hardware-perdido\JogoPi2\Origem.c(78): message : consulte a declaração de 'velx'
+C:\Users\HENRIQUE\Desktop\Em-busca-do-Hardware-perdido\JogoPi2\Origem.c(80,6): warning C4142: 'vely': redefinição benigna de tipo
+C:\Users\HENRIQUE\Desktop\Em-busca-do-Hardware-perdido\JogoPi2\Origem.c(78): message : consulte a declaração de 'vely'
+C:\Users\HENRIQUE\Desktop\Em-busca-do-Hardware-perdido\JogoPi2\Origem.c(225,17): warning C4098: 'colisaoGoblin': função 'void' retornando um valor
+C:\Users\HENRIQUE\Desktop\Em-busca-do-Hardware-perdido\JogoPi2\Origem.c(252,18): warning C4013: 'inicializacao' indefinido; assumindo extern retornando int
+C:\Users\HENRIQUE\Desktop\Em-busca-do-Hardware-perdido\JogoPi2\Origem.c(261,22): warning C4047: '=': 'int' difere em níveis de indireção de 'ALLEGRO_BITMAP *'
+C:\Users\HENRIQUE\Desktop\Em-busca-do-Hardware-perdido\JogoPi2\Origem.c(262,22): warning C4047: '=': 'int' difere em níveis de indireção de 'ALLEGRO_BITMAP *'
+C:\Users\HENRIQUE\Desktop\Em-busca-do-Hardware-perdido\JogoPi2\Origem.c(263,22): warning C4047: '=': 'int' difere em níveis de indireção de 'ALLEGRO_BITMAP *'
+C:\Users\HENRIQUE\Desktop\Em-busca-do-Hardware-perdido\JogoPi2\Origem.c(264,22): warning C4047: '=': 'int' difere em níveis de indireção de 'ALLEGRO_BITMAP *'
+C:\Users\HENRIQUE\Desktop\Em-busca-do-Hardware-perdido\JogoPi2\Origem.c(265,22): warning C4047: '=': 'int' difere em níveis de indireção de 'ALLEGRO_BITMAP *'
+C:\Users\HENRIQUE\Desktop\Em-busca-do-Hardware-perdido\JogoPi2\Origem.c(266,22): warning C4047: '=': 'int' difere em níveis de indireção de 'ALLEGRO_BITMAP *'
+  JogoPi2.vcxproj -> C:\Users\HENRIQUE\Desktop\Em-busca-do-Hardware-perdido\JogoPi2\Debug\JogoPi2.exe
