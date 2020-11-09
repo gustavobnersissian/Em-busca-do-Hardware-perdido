@@ -1,7 +1,7 @@
 ﻿  Origem.c
-C:\trabalho PI\Em-busca-do-Hardware-perdido\JogoPi2\Origem.c(80,6): warning C4142: 'velx': redefinição benigna de tipo
-C:\trabalho PI\Em-busca-do-Hardware-perdido\JogoPi2\Origem.c(79): message : consulte a declaração de 'velx'
-C:\trabalho PI\Em-busca-do-Hardware-perdido\JogoPi2\Origem.c(81,6): warning C4142: 'vely': redefinição benigna de tipo
-C:\trabalho PI\Em-busca-do-Hardware-perdido\JogoPi2\Origem.c(79): message : consulte a declaração de 'vely'
-C:\trabalho PI\Em-busca-do-Hardware-perdido\JogoPi2\Origem.c(230,17): warning C4098: 'colisaoGoblin': função 'void' retornando um valor
-  JogoPi2.vcxproj -> C:\trabalho PI\Em-busca-do-Hardware-perdido\JogoPi2\Debug\JogoPi2.exe
+C:\Users\HENRIQUE\Desktop\Em-busca-do-Hardware-perdido\JogoPi2\Origem.c(78,6): warning C4142: 'velx': redefinição benigna de tipo
+C:\Users\HENRIQUE\Desktop\Em-busca-do-Hardware-perdido\JogoPi2\Origem.c(77): message : consulte a declaração de 'velx'
+C:\Users\HENRIQUE\Desktop\Em-busca-do-Hardware-perdido\JogoPi2\Origem.c(79,6): warning C4142: 'vely': redefinição benigna de tipo
+C:\Users\HENRIQUE\Desktop\Em-busca-do-Hardware-perdido\JogoPi2\Origem.c(77): message : consulte a declaração de 'vely'
+C:\Users\HENRIQUE\Desktop\Em-busca-do-Hardware-perdido\JogoPi2\Origem.c(230,17): warning C4098: 'colisaoGoblin': função 'void' retornando um valor
+  JogoPi2.vcxproj -> C:\Users\HENRIQUE\Desktop\Em-busca-do-Hardware-perdido\JogoPi2\Debug\JogoPi2.exe

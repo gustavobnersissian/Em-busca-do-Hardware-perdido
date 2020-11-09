@@ -31,8 +31,6 @@ typedef struct objeto Objeto;
 
 Objeto* personagem, * sprite_parado, * goblin, * item;
 
-ALLEGRO_KEYBOARD_STATE key_state;
-
 
 ALLEGRO_BITMAP* frame = NULL;
 ALLEGRO_BITMAP* frame2 = NULL;
@@ -91,7 +89,9 @@ bool inimigo1 = true, inimigo2 = true;
 int velocidade_inimigo = 1.5;
 
 
-void movimentarSprite(ALLEGRO_KEYBOARD_STATE key_state) {
+void movimentarSprite() {
+
+    ALLEGRO_KEYBOARD_STATE key_state;
 
     if (evento.type == ALLEGRO_EVENT_TIMER) {
 
@@ -198,7 +198,7 @@ void movimentarSprite(ALLEGRO_KEYBOARD_STATE key_state) {
 
 void desenharSprite() {
 
-    movimentarSprite(key_state);
+    movimentarSprite();
 
     if (draw) {
         draw = false;
@@ -385,7 +385,7 @@ int jogo2(ALLEGRO_BITMAP* vermelho) {
         // Atualiza a tela
         al_flip_display();
 
-        movimentarSprite(key_state);
+        movimentarSprite();
 
         colisaoGoblin();
 
@@ -469,8 +469,7 @@ int jogo(ALLEGRO_BITMAP* azul) {
 void introducao(ALLEGRO_BITMAP* img1, int parametro) {
 
     carregaArquivos();
-    inicializacao();
-
+    
     al_clear_to_color(al_map_rgb(0, 0, 0));
 
     //primeira imagem
@@ -621,8 +620,12 @@ int main()
                 evento.mouse.y >= 144)) {
 
                
-                al_draw_bitmap(processador->imagem, 0, 0, 0);
-                //introducao(img1, 0);
+                al_draw_bitmap(processador->imagem, 150, 100, 0);
+                al_flip_display();
+
+                al_rest(4);
+
+                introducao(img1, 0);
             }
         }
         if (evento.type == ALLEGRO_EVENT_MOUSE_BUTTON_DOWN) {
